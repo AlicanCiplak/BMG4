@@ -1,0 +1,36 @@
+﻿@using Otomasyon.Models.Entity
+@model List<Öğrenci>
+@{
+    ViewBag.Title = "OgrenciListele";
+    Layout = "~/Views/Shared/_LayoutPanelimHoca.cshtml";
+}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+               
+                <th scope="col">Ad Soyad</th>
+                <th scope="col">Bölüm</th>
+                <th scope="col">Yaş</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">Cinsiyet</th>
+                <th scope="col">Sil</th>
+            </tr>
+        </thead>
+        @foreach (var x in Model)
+        {
+            <tbody>
+                <tr>
+
+
+                    <td>@x.İsimSoyisim</td>
+                    <td>@x.Bölümler.BölümAdı </td>
+                    <td>@x.Yas</td>
+                    <td>@x.Telefon</td>
+                    <td>@x.Cinsiyet</td>
+                    <td><a href="/Hocalar/OgrenciSil/@x.id" class="btn btn-danger">Sil</a></td>
+                </tr>
+
+            </tbody>
+        }
+        </table>
