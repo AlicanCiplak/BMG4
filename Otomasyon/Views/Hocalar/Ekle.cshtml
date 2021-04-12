@@ -1,0 +1,28 @@
+﻿@model Otomasyon.Models.Entity.İliski
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_LayoutPanelimHoca.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div class="form-group">
+        <label for="text">Ders</label>
+        @Html.DropDownListFor(k => k.DersİD, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form control" })
+
+    </div>
+    <div class="form-group">
+        <label for="text">Hoca</label>
+        @Html.DropDownListFor(k => k.HocaİD, (List<SelectListItem>)ViewBag.dgr, new { @class = "form control" })
+
+    </div>
+    <div class="form-group">
+        <label for="text">Akts</label>
+        @Html.DropDownListFor(k => k.ÖgrenciİD, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form control" })
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Ders Ekle</button>
+</form>
+
+

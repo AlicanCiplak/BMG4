@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fca73979c5c64320a8a0a1bfe5dc746b" Name="Diagram1">
+        <EntityTypeShape EntityType="ÖğrenciBilgiSistemiModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ÖğrenciBilgiSistemiModel.Bölümler" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ÖğrenciBilgiSistemiModel.Dersler" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ÖğrenciBilgiSistemiModel.Duyuru" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ÖğrenciBilgiSistemiModel.Hocalar" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ÖğrenciBilgiSistemiModel.İletisim" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ÖğrenciBilgiSistemiModel.İliski" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ÖğrenciBilgiSistemiModel.Öğrenci" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ÖğrenciBilgiSistemiModel.Sınıflar" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ÖğrenciBilgiSistemiModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="ÖğrenciBilgiSistemiModel.FK_Dersler_Bölümler" ManuallyRouted="false" />
+        <AssociationConnector Association="ÖğrenciBilgiSistemiModel.FK_Hocalar_Bölümler" ManuallyRouted="false" />
+        <AssociationConnector Association="ÖğrenciBilgiSistemiModel.FK_Öğrenci_Bölümler" ManuallyRouted="false" />
+        <AssociationConnector Association="ÖğrenciBilgiSistemiModel.FK_Dersler_Sınıflar" ManuallyRouted="false" />
+        <AssociationConnector Association="ÖğrenciBilgiSistemiModel.FK_İliski_Dersler" ManuallyRouted="false" />
+        <AssociationConnector Association="ÖğrenciBilgiSistemiModel.FK_İletisim_Hocalar" ManuallyRouted="false" />
+        <AssociationConnector Association="ÖğrenciBilgiSistemiModel.FK_İliski_Hocalar" ManuallyRouted="false" />
+        <AssociationConnector Association="ÖğrenciBilgiSistemiModel.FK_İliski_Öğrenci" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
