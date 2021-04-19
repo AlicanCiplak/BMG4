@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanelim.cshtml";
+}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ad Soyad</th>
+                <th scope="col">Cinsiyet</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">Yas</th>
+                <th scope="col">Bölüm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+
+                <td>@Session["id"].ToString()</td>
+                <td>@Session["OgrenciAdsoyad"].ToString() </td>
+                <td>@Session["OgrenciCinsiyet"].ToString()</td>
+                <td>@Session["OgrenciTel"].ToString()</td>
+                <td>@Session["OgrenciYas"].ToString()</td>
+                <td>@Session["OgrenciBolum"].ToString()</td>
+            </tr>
+
+        </tbody>
+    </table>
+

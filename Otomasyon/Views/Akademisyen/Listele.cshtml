@@ -1,0 +1,33 @@
+﻿@using Otomasyon.Models.Entity
+@model List<İliski>
+@{
+    ViewBag.Title = "Listele";
+    Layout = "~/Views/Shared/_LayoutA.cshtml";
+}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+
+                <th scope="col">Ders</th>
+                <th scope="col">Hoca</th>
+                <th scope="col">İsim</th>
+                <th scope="col">Not Gir</th>
+            </tr>
+        </thead>
+        @foreach (var x in Model)
+        {
+            <tbody>
+                <tr>
+
+
+                    <td>@x.Dersler.DersAdı</td>
+                    <td>@x.Hocalar.HocaAdi </td>
+                    <td>@x.Öğrenci.İsimSoyisim</td>
+                   
+                    <td><a href="/Akademisyen/NotVer/@x.id" class="btn btn-primary">Not</a></td>
+                </tr>
+
+            </tbody>
+        }
+    </table>
+
