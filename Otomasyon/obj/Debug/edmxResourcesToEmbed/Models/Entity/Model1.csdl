@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ÖğrenciBilgiSistemiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adminUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Bölümler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BölümAdı" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Dersler" Relationship="Self.FK_Dersler_Bölümler" FromRole="Bölümler" ToRole="Dersler" />
+    <NavigationProperty Name="Hocalar" Relationship="Self.FK_Hocalar_Bölümler" FromRole="Bölümler" ToRole="Hocalar" />
+    <NavigationProperty Name="Öğrenci" Relationship="Self.FK_Öğrenci_Bölümler" FromRole="Bölümler" ToRole="Öğrenci" />
+  </EntityType>
+  <EntityType Name="Dersler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DersAdı" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="BölümİD" Type="Int32" />
+    <Property Name="AKTS" Type="Int32" />
+    <Property Name="Sınıf" Type="Int32" />
+    <NavigationProperty Name="Bölümler" Relationship="Self.FK_Dersler_Bölümler" FromRole="Dersler" ToRole="Bölümler" />
+    <NavigationProperty Name="Sınıflar" Relationship="Self.FK_Dersler_Sınıflar" FromRole="Dersler" ToRole="Sınıflar" />
+    <NavigationProperty Name="İliski" Relationship="Self.FK_İliski_Dersler" FromRole="Dersler" ToRole="İliski" />
+  </EntityType>
+  <EntityType Name="Duyuru">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Duyur" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Hocalar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HocaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BölümİD" Type="Int32" />
+    <Property Name="Ünvan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bölümler" Relationship="Self.FK_Hocalar_Bölümler" FromRole="Hocalar" ToRole="Bölümler" />
+    <NavigationProperty Name="İletisim" Relationship="Self.FK_İletisim_Hocalar" FromRole="Hocalar" ToRole="İletisim" />
+    <NavigationProperty Name="İliski" Relationship="Self.FK_İliski_Hocalar" FromRole="Hocalar" ToRole="İliski" />
+  </EntityType>
+  <EntityType Name="İletisim">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="İleti" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HocaİD" Type="Int32" />
+    <NavigationProperty Name="Hocalar" Relationship="Self.FK_İletisim_Hocalar" FromRole="İletisim" ToRole="Hocalar" />
+  </EntityType>
+  <EntityType Name="İliski">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HocaİD" Type="Int32" />
+    <Property Name="DersİD" Type="Int32" />
+    <Property Name="ÖgrenciİD" Type="Int32" />
+    <Property Name="Vize" Type="Int32" />
+    <Property Name="Final" Type="Int32" />
+    <NavigationProperty Name="Dersler" Relationship="Self.FK_İliski_Dersler" FromRole="İliski" ToRole="Dersler" />
+    <NavigationProperty Name="Hocalar" Relationship="Self.FK_İliski_Hocalar" FromRole="İliski" ToRole="Hocalar" />
+    <NavigationProperty Name="Öğrenci" Relationship="Self.FK_İliski_Öğrenci" FromRole="İliski" ToRole="Öğrenci" />
+  </EntityType>
+  <EntityType Name="Öğrenci">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="İsimSoyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Yas" Type="Int32" />
+    <Property Name="Telefon" Type="Int64" />
+    <Property Name="BölümİD" Type="Int32" />
+    <Property Name="Cinsiyet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bölümler" Relationship="Self.FK_Öğrenci_Bölümler" FromRole="Öğrenci" ToRole="Bölümler" />
+    <NavigationProperty Name="İliski" Relationship="Self.FK_İliski_Öğrenci" FromRole="Öğrenci" ToRole="İliski" />
+  </EntityType>
+  <EntityType Name="Sınıflar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Sınıf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Dersler" Relationship="Self.FK_Dersler_Sınıflar" FromRole="Sınıflar" ToRole="Dersler" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Dersler_Bölümler">
+    <End Role="Bölümler" Type="Self.Bölümler" Multiplicity="0..1" />
+    <End Role="Dersler" Type="Self.Dersler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bölümler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Dersler">
+        <PropertyRef Name="BölümİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hocalar_Bölümler">
+    <End Role="Bölümler" Type="Self.Bölümler" Multiplicity="0..1" />
+    <End Role="Hocalar" Type="Self.Hocalar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bölümler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Hocalar">
+        <PropertyRef Name="BölümİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Öğrenci_Bölümler">
+    <End Role="Bölümler" Type="Self.Bölümler" Multiplicity="0..1" />
+    <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bölümler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Öğrenci">
+        <PropertyRef Name="BölümİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dersler_Sınıflar">
+    <End Role="Sınıflar" Type="Self.Sınıflar" Multiplicity="0..1" />
+    <End Role="Dersler" Type="Self.Dersler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sınıflar">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Dersler">
+        <PropertyRef Name="Sınıf" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_İliski_Dersler">
+    <End Role="Dersler" Type="Self.Dersler" Multiplicity="0..1" />
+    <End Role="İliski" Type="Self.İliski" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dersler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="İliski">
+        <PropertyRef Name="DersİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_İletisim_Hocalar">
+    <End Role="Hocalar" Type="Self.Hocalar" Multiplicity="0..1" />
+    <End Role="İletisim" Type="Self.İletisim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hocalar">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="İletisim">
+        <PropertyRef Name="HocaİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_İliski_Hocalar">
+    <End Role="Hocalar" Type="Self.Hocalar" Multiplicity="0..1" />
+    <End Role="İliski" Type="Self.İliski" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hocalar">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="İliski">
+        <PropertyRef Name="HocaİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_İliski_Öğrenci">
+    <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="0..1" />
+    <End Role="İliski" Type="Self.İliski" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Öğrenci">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="İliski">
+        <PropertyRef Name="ÖgrenciİD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ÖğrenciBilgiSistemiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admin" EntityType="Self.Admin" />
+    <EntitySet Name="Bölümler" EntityType="Self.Bölümler" />
+    <EntitySet Name="Dersler" EntityType="Self.Dersler" />
+    <EntitySet Name="Duyuru" EntityType="Self.Duyuru" />
+    <EntitySet Name="Hocalar" EntityType="Self.Hocalar" />
+    <EntitySet Name="İletisim" EntityType="Self.İletisim" />
+    <EntitySet Name="İliski" EntityType="Self.İliski" />
+    <EntitySet Name="Öğrenci" EntityType="Self.Öğrenci" />
+    <EntitySet Name="Sınıflar" EntityType="Self.Sınıflar" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Dersler_Bölümler" Association="Self.FK_Dersler_Bölümler">
+      <End Role="Bölümler" EntitySet="Bölümler" />
+      <End Role="Dersler" EntitySet="Dersler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hocalar_Bölümler" Association="Self.FK_Hocalar_Bölümler">
+      <End Role="Bölümler" EntitySet="Bölümler" />
+      <End Role="Hocalar" EntitySet="Hocalar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Öğrenci_Bölümler" Association="Self.FK_Öğrenci_Bölümler">
+      <End Role="Bölümler" EntitySet="Bölümler" />
+      <End Role="Öğrenci" EntitySet="Öğrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dersler_Sınıflar" Association="Self.FK_Dersler_Sınıflar">
+      <End Role="Sınıflar" EntitySet="Sınıflar" />
+      <End Role="Dersler" EntitySet="Dersler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_İliski_Dersler" Association="Self.FK_İliski_Dersler">
+      <End Role="Dersler" EntitySet="Dersler" />
+      <End Role="İliski" EntitySet="İliski" />
+    </AssociationSet>
+    <AssociationSet Name="FK_İletisim_Hocalar" Association="Self.FK_İletisim_Hocalar">
+      <End Role="Hocalar" EntitySet="Hocalar" />
+      <End Role="İletisim" EntitySet="İletisim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_İliski_Hocalar" Association="Self.FK_İliski_Hocalar">
+      <End Role="Hocalar" EntitySet="Hocalar" />
+      <End Role="İliski" EntitySet="İliski" />
+    </AssociationSet>
+    <AssociationSet Name="FK_İliski_Öğrenci" Association="Self.FK_İliski_Öğrenci">
+      <End Role="Öğrenci" EntitySet="Öğrenci" />
+      <End Role="İliski" EntitySet="İliski" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
